@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2016-2020 VMware, Inc. All Rights Reserved.
+ * Copyright (c) 2016-2021 VMware, Inc. All Rights Reserved.
  * This software is released under MIT license.
  * The full license information can be found in LICENSE in the root directory of this project.
  */
@@ -97,19 +97,12 @@ export default function (): void {
       expect(context.clarityDirective.open).toBe(false);
     });
 
-    it('focuses on the first projected button', function () {
-      const ngZone = TestBed.get(NgZone);
-      spyOn(ngZone, 'runOutsideAngular').and.callFake(
-        (_fn: Function) =>
-          function () {
-            context.fixture.whenStable().then(() => {
-              const firstButton: HTMLButtonElement = context.testComponent.actionItem.nativeElement;
-              expect(document.activeElement).toEqual(firstButton);
-            });
-          }
-      );
+    it('focuses on the first projected button', async function () {
       toggle.click();
       context.detectChanges();
+      await context.fixture.whenStable();
+      const firstButton: HTMLButtonElement = context.testComponent.actionItem.nativeElement;
+      expect(document.activeElement).toEqual(firstButton);
     });
   });
 }
