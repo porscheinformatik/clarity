@@ -4,7 +4,7 @@
  * The full license information can be found in LICENSE in the root directory of this project.
  */
 
-import { Component, ViewChild, ElementRef, NgZone } from '@angular/core';
+import { Component, ViewChild, ElementRef } from '@angular/core';
 
 import { ClrDatagridActionOverflow } from './datagrid-action-overflow';
 import { TestContext } from './helpers.spec';
@@ -12,7 +12,6 @@ import { RowActionService } from './providers/row-action-service';
 import { ClrPopoverEventsService } from '../../utils/popover/providers/popover-events.service';
 import { ClrPopoverToggleService } from '../../utils/popover/providers/popover-toggle.service';
 import { ClrPopoverPositionService } from '../../utils/popover/providers/popover-position.service';
-import { TestBed } from '@angular/core/testing';
 
 export default function (): void {
   describe('DatagridActionOverflow component', function () {
